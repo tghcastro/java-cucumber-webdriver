@@ -1,8 +1,9 @@
-package tghcastro;
+package tghcastro.steps;
 
 import io.cucumber.java.en.Then;
+import tghcastro.steps.support.ScenarioContext;
 
-import static tghcastro.ScenarioContextConstants.NAME;
+import static tghcastro.steps.support.ScenarioContextConstants.NAME;
 
 public class SearchResultSteps {
     private ScenarioContext context;

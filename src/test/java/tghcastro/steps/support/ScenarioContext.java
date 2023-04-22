@@ -1,4 +1,4 @@
-package tghcastro;
+package tghcastro.steps.support;
 
 import java.util.HashMap;
 import java.util.Map;
