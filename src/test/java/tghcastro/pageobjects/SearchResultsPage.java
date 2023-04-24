@@ -25,7 +25,7 @@ public class SearchResultsPage {
         return "Thiago de Castro";
     }
 
-    public void shouldBeOpen(String queryValue) {
+    public void mustBeOpen(String queryValue) {
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
 
         wait.until(ExpectedConditions.titleIs(queryValue + " - YouTube"));
@@ -34,5 +34,7 @@ public class SearchResultsPage {
         String aboutResultsXpath = "//span[contains(text(),'About these results')]";
         WebElement aboutResults = this.driver.findElement(By.xpath(aboutResultsXpath));
         wait.until(ExpectedConditions.visibilityOf(aboutResults));
+
+        System.out.println("Results page is displayed");
     }
 }

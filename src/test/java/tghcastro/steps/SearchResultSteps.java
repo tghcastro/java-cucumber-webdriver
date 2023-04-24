@@ -25,9 +25,12 @@ public class SearchResultSteps {
 
     @Then("Youtube displays results for {string} instead of {string}")
     public void youtube_displays_results_for_instead_of(String wrongSearch, String userName) {
-        String expectedMessage = String.format("Showing results for %s Search instead for %s", wrongSearch, userName);
-        String displayedMessage = this.youtube.searchResults().searchQueryCorrection().message();
-        assertEquals(expectedMessage, displayedMessage);
+        String expectedMessage = String.format(
+                "Showing results for %s Search instead for %s",
+                wrongSearch,
+                userName);
+        String showingResultsForMessage = this.youtube.searchResults().searchQueryCorrection().fullMessage();
+        assertEquals(expectedMessage, showingResultsForMessage);
     }
 
 }

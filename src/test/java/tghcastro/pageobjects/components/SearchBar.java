@@ -37,13 +37,8 @@ public class SearchBar {
         this.searchInput.sendKeys(Keys.RETURN);
 
         SearchResultsPage results = InstancesRepository.loadInstance(SearchResultsPage.class);
-        results.shouldBeOpen(userName);
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        results.mustBeOpen(userName);
+        results.searchQueryCorrection().mustBeVisible();
     }
 
 }
