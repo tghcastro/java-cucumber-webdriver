@@ -25,5 +25,6 @@ public class Hooks {
     public void afterScenario(Scenario scenario){
         System.out.println("Scenario Context: " + this.scenarioContext.toString());
         System.out.println("### Finished Scenario >>> " + scenario.getName());
+        this.youtube.close();
     }
 }
