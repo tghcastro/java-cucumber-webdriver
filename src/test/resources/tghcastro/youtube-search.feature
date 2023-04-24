@@ -1,5 +1,8 @@
 Feature: Youtube Search for weird user name
 
+  Background:
+    Given I accepted the Cookies policies
+
   Scenario: Search for a video using an weird user name
     Given a video published video from the user "tghcastro"
     When I search for this user
