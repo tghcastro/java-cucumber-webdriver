@@ -29,7 +29,7 @@ public class SearchResultSteps {
                 "Showing results for %s Search instead for %s",
                 wrongSearch,
                 userName);
-        String showingResultsForMessage = this.youtube.searchResults().searchQueryCorrection().fullMessage();
+        String showingResultsForMessage = this.youtube.searchResults().searchQueryCorrection().fullCorrectionMessage();
         assertEquals(expectedMessage, showingResultsForMessage);
     }
 

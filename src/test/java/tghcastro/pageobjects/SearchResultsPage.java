@@ -12,9 +12,11 @@ import java.time.Duration;
 
 public class SearchResultsPage {
     private final WebDriver driver;
+    private final WebDriverWait wait;
 
     public SearchResultsPage() {
         this.driver = InstancesRepository.getUIAutomationDriver();
+        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
     }
 
     public SearchQueryCorrection searchQueryCorrection() {
@@ -22,18 +24,21 @@ public class SearchResultsPage {
     }
 
     public String displayedUser() {
-        return "Thiago de Castro";
+        String xpathChannelDisplayed = "//*[contains(text(),'@')]/ancestor::ytd-channel-renderer";
+        WebElement channel = this.driver.findElement(By.xpath(xpathChannelDisplayed));
+        this.wait.until(ExpectedConditions.visibilityOf(channel));
+
+        WebElement name = channel.findElement(By.id("text"));
+        return name.getText();
     }
 
     public void mustBeOpen(String queryValue) {
-        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
-
-        wait.until(ExpectedConditions.titleIs(queryValue + " - YouTube"));
-        wait.until(ExpectedConditions.urlContains("search_query=" + queryValue));
+        this.wait.until(ExpectedConditions.titleIs(queryValue + " - YouTube"));
+        this.wait.until(ExpectedConditions.urlContains("search_query=" + queryValue));
 
         String aboutResultsXpath = "//span[contains(text(),'About these results')]";
         WebElement aboutResults = this.driver.findElement(By.xpath(aboutResultsXpath));
-        wait.until(ExpectedConditions.visibilityOf(aboutResults));
+        this.wait.until(ExpectedConditions.visibilityOf(aboutResults));
 
         System.out.println("Results page is displayed");
     }

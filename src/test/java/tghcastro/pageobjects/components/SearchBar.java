@@ -38,7 +38,7 @@ public class SearchBar {
 
         SearchResultsPage results = InstancesRepository.loadInstance(SearchResultsPage.class);
         results.mustBeOpen(userName);
-        results.searchQueryCorrection().mustBeVisible();
+        results.searchQueryCorrection().correctionMustBeVisible();
     }
 
 }
