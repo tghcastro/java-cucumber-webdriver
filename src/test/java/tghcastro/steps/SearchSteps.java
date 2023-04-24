@@ -25,7 +25,7 @@ public class SearchSteps {
     @When("I confirm my original search")
     public void i_confirm_my_original_search() {
         String userName = this.context.getValue(USER_NAME).toString();
-        this.youtube.searchResults().searchQueryCorrection().searchInsteadFor(userName);
+        this.youtube.searchResults().searchQueryCorrection().confirmSearchInsteadFor(userName);
     }
 
 }

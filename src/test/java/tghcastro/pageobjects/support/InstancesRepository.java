@@ -1,5 +1,7 @@
 package tghcastro.pageobjects.support;
 
+import org.openqa.selenium.WebDriver;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -7,6 +9,7 @@ import java.util.Map;
 
 public class InstancesRepository {
     private static Map<Class, Object> instances = new HashMap<>();
+    private static WebDriver uiAutomationDriver;
 
     public static <T> T loadInstance(Class type) {
         Object instance = instances.get(type);
@@ -17,6 +20,7 @@ public class InstancesRepository {
     }
 
     private static <T> T createInstance(Class type) {
+        //TODO: Improve exception handling
         try {
             Constructor constructor = type.getConstructor();
             Object instanceOfMyClass = constructor.newInstance();
@@ -32,4 +36,13 @@ public class InstancesRepository {
             throw new RuntimeException(e);
         }
     }
+
+    public static void setUIAutomationDriver(WebDriver driver) {
+        uiAutomationDriver = driver;
+    }
+
+    public static WebDriver getUIAutomationDriver() {
+        return uiAutomationDriver;
+    }
+
 }
